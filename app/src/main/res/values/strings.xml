@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SeaCoin</string>
+    <string name="login_notice">모든 불상사는 본 앱의 책임이 없으므로,\n 이 점 유의하여 사용하여 주시길 바랍니다.</string>
+</resources>
