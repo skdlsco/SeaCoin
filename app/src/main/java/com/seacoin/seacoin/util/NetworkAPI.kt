@@ -33,4 +33,9 @@ interface NetworkAPI {
             @Query("num") num: Int,
             @Query("coin") coin: String): Call<ResponseBody>
 
+    @GET("/sale")
+    fun sale(@Query("id") id: String,
+             @Query("num") num: Int,
+             @Query("coin") coin: String): Call<ResponseBody>
+
 }

@@ -27,7 +27,7 @@ class CreditDialog(context: Context, private val coin: String, var payCallback: 
         pref = context.getSharedPreferences("user", Context.MODE_PRIVATE)
         val id = pref.getString("id", "")
 
-        countEdit.hint = if(isBuy) "구매 개수" else "판매 개수"
+        countEdit.hint = if (isBuy) "구매 개수" else "판매 개수"
         title.text = if (isBuy) "$coin 구매하기" else "$coin 판매하기"
         ok.setOnClickListener {
             if (!isPaying) {
@@ -47,7 +47,19 @@ class CreditDialog(context: Context, private val coin: String, var payCallback: 
 
                     })
                 } else {
+                    NetworkHelper.networkInstance.sale(id, countEdit.text.toString().toInt(), coin).enqueue(object : Callback<ResponseBody> {
+                        override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
+                            Toast.makeText(context, "판매 성공", Toast.LENGTH_SHORT).show()
+                            payCallback?.onPayFinish()
+                            dismiss()
+                        }
 
+                        override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                            Toast.makeText(context, "판매 실패", Toast.LENGTH_SHORT).show()
+                            dismiss()
+                        }
+
+                    })
                 }
             }
         }

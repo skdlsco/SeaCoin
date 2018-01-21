@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
                         pref_edit.commit()
                         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                         finish()
-                    } else Toast.makeText(this@LoginActivity, "회원가입 실패", Toast.LENGTH_SHORT).show()
+                    } else Toast.makeText(this@LoginActivity, "로그인 실패", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {

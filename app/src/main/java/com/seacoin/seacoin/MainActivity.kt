@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.github.mikephil.charting.components.XAxis
@@ -64,6 +63,18 @@ class MainActivity : AppCompatActivity() {
                         }
                         CreditDialog(this@MainActivity, coin, object : CreditDialog.PayCallback {
                             override fun onPayFinish() {
+                                isRefreshed = false
+                                var count = 0;
+                                val timer = Timer()
+                                timer.schedule(object : TimerTask() {
+                                    override fun run() {
+                                        if (count++ >= 6)
+                                            timer.cancel()
+                                        else
+                                            setCoinItems()
+                                    }
+
+                                }, 0, 2000)
                                 setCoinItems()
                             }
 
@@ -78,6 +89,18 @@ class MainActivity : AppCompatActivity() {
                         }
                         CreditDialog(this@MainActivity, coin, object : CreditDialog.PayCallback {
                             override fun onPayFinish() {
+                                isRefreshed = false
+                                var count = 0;
+                                val timer = Timer()
+                                timer.schedule(object : TimerTask() {
+                                    override fun run() {
+                                        if (count++ >= 3)
+                                            timer.cancel()
+                                        else
+                                            setCoinItems()
+                                    }
+
+                                }, 0, 3000)
                                 setCoinItems()
                             }
 
@@ -93,6 +116,7 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
                 val json = JSONObject(response?.body()?.string())
                 if (json.getInt("result") == 1) {
+                    counts.clear()
                     counts.add(json.getJSONObject("coin").getInt("ETC"))
                     counts.add(json.getJSONObject("coin").getInt("WTC"))
                     counts.add(json.getJSONObject("coin").getInt("STC"))
