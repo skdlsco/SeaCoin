@@ -10,8 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 class NetworkHelper(private val context: Context) {
     companion object {
-        private val url = "http://soylatte.kr"
-        private val port = 8080
+        private val url = "http://prometasv.com"
+        private val port = 80
 
         var retrofit: Retrofit? = null
 

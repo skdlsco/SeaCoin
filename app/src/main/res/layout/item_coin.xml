@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="com.seacoin.seacoin.CoinData" />
+            type="com.seacoin.seacoin.models.CoinData" />
     </data>
 
     <RelativeLayout

@@ -25,16 +25,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:text="이름"
+            android:text="카드 번호"
             android:textColor="@android:color/black" />
 
         <EditText
-            android:id="@+id/nameEdit"
+            android:id="@+id/cardNumEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@drawable/box_gray_stroke"
-            android:hint="이름 입력"
+            android:digits="0123456789-"
+            android:hint="'-' 입력"
+            android:inputType="number"
             android:maxLines="1"
             android:paddingBottom="6dp"
             android:paddingStart="8dp"
@@ -46,67 +48,85 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp"
-            android:text="아이디"
+            android:text="카드 유효기간"
             android:textColor="@android:color/black" />
 
-        <EditText
-            android:id="@+id/idEdit"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/box_gray_stroke"
-            android:hint="아이디 입력"
-            android:maxLines="1"
-            android:padding="6dp"
-            android:paddingBottom="6dp"
-            android:paddingStart="8dp"
-            android:paddingTop="6dp"
-            android:textSize="15sp" />
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/monthEdit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/box_gray_stroke"
+                android:hint="MM"
+                android:inputType="numberDecimal"
+                android:maxLength="2"
+                android:maxLines="1"
+                android:padding="6dp"
+                android:paddingBottom="6dp"
+                android:paddingStart="8dp"
+                android:paddingTop="6dp"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="16dp"
+                android:layout_height="match_parent" />
+
+            <EditText
+                android:id="@+id/yearEdit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/box_gray_stroke"
+                android:hint="YY"
+                android:inputType="numberDecimal"
+                android:maxLength="2"
+                android:maxLines="1"
+                android:padding="6dp"
+                android:paddingBottom="6dp"
+                android:paddingStart="8dp"
+                android:paddingTop="6dp"
+                android:textSize="15sp" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp"
-            android:text="비밀번호"
+            android:text="계좌 비밀번호"
             android:textColor="@android:color/black" />
 
         <EditText
-            android:id="@+id/passwordEdit"
+            android:id="@+id/cardPassEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@drawable/box_gray_stroke"
-            android:hint="비밀번호 입력"
-            android:inputType="textPassword"
-            android:maxLines="1"
+            android:hint="앞 2자리 입력"
+            android:inputType="numberPassword"
+            android:maxLength="2"
             android:padding="6dp"
             android:paddingBottom="6dp"
             android:paddingStart="8dp"
             android:paddingTop="6dp"
             android:textSize="15sp" />
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:text="생년월일"
-            android:textColor="@android:color/black" />
-
-        <EditText
-            android:id="@+id/birthEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/box_gray_stroke"
-            android:hint="생년월일(6자리)"
-            android:inputType="numberDecimal"
-            android:padding="6dp"
-            android:paddingBottom="6dp"
-            android:paddingStart="8dp"
-            android:paddingTop="6dp"
-            android:textSize="15sp" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="28dp"
+            android:gravity="center"
+            android:text="타인의 명의 도용 시, 법적 처벌을 받을 수 있습니다."
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="12sp" />
 
         <View
             android:layout_width="match_parent"
@@ -114,13 +134,13 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/nextBtn"
+            android:id="@+id/registerBtn"
             android:layout_width="128dp"
             android:layout_height="32dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="80dp"
             android:background="@drawable/box_black_stroke"
-            android:text="다음"
+            android:text="회원가입"
             android:textSize="13sp" />
     </LinearLayout>
 </LinearLayout>

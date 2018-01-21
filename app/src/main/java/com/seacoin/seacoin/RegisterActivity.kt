@@ -1,5 +1,6 @@
 package com.seacoin.seacoin
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -11,8 +12,19 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        setSupportActionBar(toolbar)
         toolbar.title = "회원가입"
         toolbar.setTitleTextColor(Color.BLACK)
+        setSupportActionBar(toolbar)
+
+        nextBtn.setOnClickListener {
+            val intent = Intent(this@RegisterActivity
+                    , Register2Activity::class.java).apply {
+                putExtra("birth", birthEdit.text.toString())
+                putExtra("name", nameEdit.text.toString())
+                putExtra("id", idEdit.text.toString())
+                putExtra("password", passwordEdit.text.toString())
+            }
+            startActivity(intent)
+        }
     }
 }
